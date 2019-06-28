@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+
+   <!-- pagination -->
+  <script type="text/javascript" src="/javascripts/jquery.js">
+    $('#pagination-demo').twbsPagination({
+          totalPages: 16,
+          visiblePages: 6,
+          next: 'Next',
+          prev: 'Prev',
+          onPageClick: function (event, page) {
+              //fetch content and render here
+              $('#page-content').text('Page ' + page) + ' content here';
+          }
+      });
+    </script>
+
+  <body>
+    <h1><%= title %></h1>
+    <p>Edits <%= title %></p>
+
+
+
+<!-- pagination -->
+    <div class="wrapper">
+            <div class="container">
+              
+              <div class="row">
+                <div class="col-sm-12">
+                  <h1>jQuery Pagination</h1>
+                  <p>Simple pagination using the TWBS pagination JS library. Click the buttons below to navigate to the appropriate content</p>
+                  <ul id="pagination-demo" class="pagination-sm" style="background-color: aqua"></ul>
+                </div>
+              </div>
+          
+              <div id="page-content" class="page-content">Page 1</div>
+            </div>
+          </div>
+<!-- pagination -->
+
+  </body>
+
+</html>

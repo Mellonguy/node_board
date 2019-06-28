@@ -1,0 +1,1 @@
+select * from iftg.adtn_prod_lst limit 10;
