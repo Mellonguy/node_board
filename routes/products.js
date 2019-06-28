@@ -75,8 +75,8 @@ router.get("/pasing/:cur",(req,res)=>{
                     res.render('products', { data: null, message: "ERROR is occured!" }); 
                     return;
                 }
-                console.log('data.rows =====================================+++> ',data.rows);
-                res.render('products', { title: '게시판 시작', data: JSON.parse(JSON.stringify(data.rows.toString())), curPage: curPage, totalPage: totalPage,totalSet: totalSet,curSet: curSet, endPage: endPage});                               
+                console.log('data.rows =====================================+++> \n',data.rows);
+                res.render('products', { title: '게시판 시작', data: JSON.stringify(data.rows), curPage: curPage, totalPage: totalPage,totalSet: totalSet,curSet: curSet, endPage: endPage});                               
 
             });
     });

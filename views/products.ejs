@@ -383,26 +383,37 @@ $pagination.twbsPagination("changeTotalPages", 99, 9);
 
 
 const grid = new tui.Grid({
-    el: document.getElementById('grid'),
-    data: <%= data%>,
-    scrollX: false,
+    el: $('#grid'),
+    data: [
+     { bodyserail: '26',
+    prodcd: 'B076',
+    prodnm: '전기안전관리대행 - 800~900kW',
+    prodparamlist:
+     '{[  {"paramTypeCd":"DCTARIF1", "paramTypeNm":"약정/재약정 할인율", "paramValue":"43"} , {"paramTypeCd":"ENGTMONS4", "paramTypeNm":"약정/재약정기간", "paramValue":"0"} ]}' }
+
+    ],
+    scrollX: true,
     scrollY: false,
     columns: [
       {
         header: 'bodyserail',
-        name: 'bodyserail'
+        name: 'bodyserail',
+        width: 100
       },
       {
         header: 'prodcd',
-        name: 'prodcd'
+        name: 'prodcd',
+        width: 100
       },
       {
         header: 'prodnm',
-        name: 'prodnm:'
+        name: 'prodnm:',
+        width: 100
       },
       {
         header: 'prodparamlist',
-        name: 'prodparamlist'
+        name: 'prodparamlist',
+        width: 100
       }
     ]
   });
@@ -419,7 +430,7 @@ const grid = new tui.Grid({
     
    </div>
 
-    <%= JSON.stringify(data) %>
+    
 
     <div id="grid"></div>
 
