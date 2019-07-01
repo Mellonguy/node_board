@@ -27,7 +27,7 @@ router.get("/pasing/:cur",(req,res)=>{
     pool.query(queryString,(err,data)=>{
         if(err){
             console.log(err+"메인 화면 조회 실패");
-            res.render('data', { title: title, data: null, message: "ERROR is occured!" }); 
+            res.render('data', { title: 'boadrd', data: null, message: "ERROR is occured!" }); 
             return;
         }
 
@@ -75,8 +75,15 @@ router.get("/pasing/:cur",(req,res)=>{
                     res.render('products', { data: null, message: "ERROR is occured!" }); 
                     return;
                 }
-                console.log('data.rows =====================================+++> \n',data.rows);
-                res.render('products', { title: '게시판 시작', data: JSON.stringify(data.rows), curPage: curPage, totalPage: totalPage,totalSet: totalSet,curSet: curSet, endPage: endPage});                               
+                
+                const data2 = [];
+                data.rows.forEach(element => {
+                    data2.push(element.prodparamlist);
+                });
+                
+                console.log(data2);
+                
+                res.render('products', { title: '게시판 시작', data: JSON.stringify(data.rows), data2: data2 , curPage: curPage, totalPage: totalPage,totalSet: totalSet,curSet: curSet, endPage: endPage});                               
 
             });
     });
