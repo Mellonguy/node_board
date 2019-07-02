@@ -68,8 +68,11 @@ router.get("/pasing/:cur",(req,res)=>{
             "endPage": endPage
             };
             console.log(result2);
-            var queryString = 'select * from iftg.adtn_prod_lst limit $1 offset $2';
-            pool.query(queryString,[page_size, page_size], (err,data)=>{
+            // var queryString = 'select * from iftg.adtn_prod_lst limit $1 offset $2';
+            var queryString = 'select * from iftg.adtn_prod_lst';
+            pool.query(queryString,
+                //[page_size, page_size], 
+                (err,data)=>{
                 if(err){
                     console.log(err+" 조회 실패");
                     res.render('products', { data: null, message: "ERROR is occured!" }); 
@@ -81,9 +84,9 @@ router.get("/pasing/:cur",(req,res)=>{
                     data2.push(element.prodparamlist);
                 });
                 
-                console.log(data2);
                 
-                res.render('products', { title: '게시판 시작', data: JSON.stringify(data.rows), data2: data2 , curPage: curPage, totalPage: totalPage,totalSet: totalSet,curSet: curSet, endPage: endPage});                               
+                
+                res.render('products', { title: '게시판 시작', data: data.rows, data2: data2 , curPage: curPage, totalPage: totalPage,totalSet: totalSet,curSet: curSet, endPage: endPage});                               
 
             });
     });

@@ -7,7 +7,7 @@ var logger = require('morgan');
 /**routers */
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var productRouter = require('./routes/products');
+var dataGridRouter = require('./routes/dataGrid');
 
 var app = express();
 
@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 /**views */
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/products',productRouter);
+app.use('/dataGrid',dataGridRouter);
 
 
 // catch 404 and forward to error handler
