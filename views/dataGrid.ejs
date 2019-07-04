@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Bootstrap Example</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">        
-        <link rel='stylesheet' href='/stylesheets/style.css' />
-        <link rel='stylesheet' href='/stylesheets/tui-grid.css' />
-        <link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.pagination/v3.3.0/tui-pagination.css" />
+  <head>
+   
+    <link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.pagination/v3.3.0/tui-pagination.css" />  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- <script type="text/javascript" src="https://uicdn.toast.com/tui.pagination/v3.3.0/tui-pagination.js"></script> -->
+    <script type="text/javascript" src="/javascripts/tui-grid.js"></script>
+    <title>Data Grid Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     </head>
+    <link rel='stylesheet' type="text/css" href='/stylesheets/style.css' />
+    <link rel='stylesheet' type="text/css" href='/stylesheets/tui-grid.css' />
   <body>
 
     <div class='container'>
@@ -16,55 +21,36 @@
 
    </div>
 
-    <div id="grid" style="float:left;width:400;height:100%;"></div>
+    <div id="grid" style="width:800"></div>
 
   </body>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://uicdn.toast.com/tui.pagination/v3.3.0/tui-pagination.js"></script>
-<script src="/javascripts/tui-grid.js"></script>
 <script type="text/javascript">
   
-let datagrid = <%- JSON.stringify(data) %>; // 데이터
-let datagrid2 = <%- JSON.stringify(data2) %>; // 데이터
+let datagrid = <%- data %>; // 데이터
 
 //순서가 중요하다
 
   // 그리드 테마
  
- tui.Grid.applyTheme('default', {
+ tui.Grid.applyTheme('striped', {
      grid: {
-         border: '#aaa',
-         text: '#333'
+         border: '#ff8c00',
+         text: '#a52a2a'
      },
      cell: {
          disabled: {
-             text: '#999'
+             text: '#17e6c8'
          }
      }
  });
  
- // 그리드 테마
-  tui.Grid.applyTheme('striped', {
-     grid: {
-         border: '#aaa',
-         text: '#333'
-     },
-     cell: {
-         disabled: {
-             text: '#999'
-         }
-     }
- });
-
 /**
  * tui.grid 출력
  */
 
 const grid = new tui.Grid({
   el: document.getElementById('grid'),    
-  data: datagrid.slice(0,5),
+  data: datagrid,
   // data: [{
   //   bodyserail:'bodyserail',
   //   prodcd:'prodcd',

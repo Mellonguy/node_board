@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express');
 var router = express.Router();
 const {Pool} = require('pg');
@@ -66,7 +68,8 @@ router.get("/pasing/:cur",(req,res)=>{
             "curSet": curSet,
             "startPage": startPage,
             "endPage": endPage
-            };
+            };            
+        
             console.log(result2);
             // var queryString = 'select * from iftg.adtn_prod_lst limit $1 offset $2';
             var queryString = 'select * from iftg.adtn_prod_lst';
@@ -75,7 +78,7 @@ router.get("/pasing/:cur",(req,res)=>{
                 (err,data)=>{
                 if(err){
                     console.log(err+" 조회 실패");
-                    res.render('products', { data: null, message: "ERROR is occured!" }); 
+                    res.render('dataGrid', { data: null, message: "ERROR is occured!" }); 
                     return;
                 }
                 
@@ -86,7 +89,7 @@ router.get("/pasing/:cur",(req,res)=>{
                 
                 
                 
-                res.render('products', { title: '게시판 시작', data: data.rows, data2: data2 , curPage: curPage, totalPage: totalPage,totalSet: totalSet,curSet: curSet, endPage: endPage});                               
+                res.render('dataGrid', { title: '게시판 시작', data: JSON.stringify(data.rows), data2: data2 , curPage: curPage, totalPage: totalPage,totalSet: totalSet,curSet: curSet, endPage: endPage});                               
 
             });
     });
@@ -127,7 +130,7 @@ router.get("/edit/:id",(req,res)=>{
 })
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('products', { title: '게시판 get home page' });
+  res.render('dataGrid', { title: '게시판 get home page' });
 });
 
 
